@@ -1,0 +1,14 @@
+{
+  "name": "cs-js-bubble",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Rastopyr <rastopyr@gmail.com> (http://rastopyr.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "random-ext": "^2.5.1"
+  }
+}
