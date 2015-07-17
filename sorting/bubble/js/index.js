@@ -65,8 +65,6 @@ function bubbleSort(array) {
   return iterate(true, 0);
 }
 
-var arr = [ 188, 590, 795, 155, 273, 451, 474, 788, 46, 75 ];
-
 console.time('bubble');
 console.log(bubbleSort(random.integerArray(10, 999, 0)));
 console.timeEnd('bubble');
