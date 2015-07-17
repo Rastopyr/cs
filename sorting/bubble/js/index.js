@@ -79,12 +79,12 @@ function bubbleSortLoop(array) {
   return array;
 }
 
-var array = random.integerArray(10, 999, 0);
+var array = random.integerArray(1000, 999, 0);
 
 console.time('bubble');
-console.log(bubbleSortLoop(array));
+bubbleSortLoop(array);
 console.timeEnd('bubble');
 
 console.time('bubble');
-console.log(bubbleSortReqursion(array));
+bubbleSortReqursion(array);
 console.timeEnd('bubble');

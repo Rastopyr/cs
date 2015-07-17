@@ -1,14 +1,17 @@
 {
   "name": "cs-js-bubble",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "./node_modules/.bin/babel-node index.js"
   },
   "author": "Rastopyr <rastopyr@gmail.com> (http://rastopyr.github.io/)",
   "license": "MIT",
   "dependencies": {
     "random-ext": "^2.5.1"
+  },
+  "devDependencies": {
+    "babel": "^5.6.23"
   }
 }
