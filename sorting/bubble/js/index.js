@@ -1,7 +1,7 @@
 
 var random = require('random-ext');
 
-function bubbleSort(array) {
+function bubbleSortReqursion(array) {
   function coupleChange (a, b) {
     return a > b;
   }
@@ -65,6 +65,26 @@ function bubbleSort(array) {
   return iterate(true, 0);
 }
 
+function bubbleSortLoop(array) {
+  for(var i = 0; i < array.length; i++) {
+    for(var c = 0; c < array.length; c++) {
+      var a = array[c], b = array[i];
+      if (a > b) {
+        array[i] = a;
+        array[c] = b;
+      }
+    }
+  }
+
+  return array;
+}
+
+var array = random.integerArray(10, 999, 0);
+
 console.time('bubble');
-console.log(bubbleSort(random.integerArray(10, 999, 0)));
+console.log(bubbleSortLoop(array));
+console.timeEnd('bubble');
+
+console.time('bubble');
+console.log(bubbleSortReqursion(array));
 console.timeEnd('bubble');
