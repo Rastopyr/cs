@@ -2,37 +2,71 @@
 var random = require('random-ext');
 
 function bubbleSort(array) {
-  var whileLoop = true, newArr = [], loopedArray = array;
-
-  function compareNumber(a, b) {
-    return a < b;
+  function coupleChange (a, b) {
+    return a > b;
   }
 
-  function getBiggest(bigarr) {
-    return bigarr.reduce(function (first, item, value, arr, index) {
-      if (first && compareNumber(item, first)) {
-        return first;
+  function change(arr, index) {
+    var indexedValue = arr[index];
+    var nextValue = arr[index+1];
+
+    arr[index] = nextValue;
+    arr[index+1] = indexedValue;
+
+    return arr
+  }
+
+  function isValidArray (index) {
+    if (coupleChange(array[index], array[index+1])) {
+      return false;
+    }
+
+    if (!array[index+1]) {
+      return true;
+    }
+
+    return isValidArray(index+1);
+  }
+
+  function indexOfNextIterate(index) {
+    if (!array[index+1]) {
+
+      if( isValidArray(0) ) {
+        return false;
       }
 
-      if (first && compareNumber(first, item)) {
-        return item;
-      }
+      return indexOfNextIterate(0);
+    }
 
-      return item;
-    }, null);
+    if (array[index + 1] && coupleChange(array[index], array[index+1])) {
+      return index;
+    }
+
+    return indexOfNextIterate(index+1);
   }
 
-  while(whileLoop) {
-    var pushedValue = getBiggest(loopedArray);
+  function iterate (isIterate, index) {
+    var nextIndex;
 
-    newArr.unshift(pushedValue);
-    loopedArray = loopedArray.filter(function (v) { return v !== pushedValue });
-    if (!loopedArray.length) { whileLoop = false; }
+    if(!isIterate) {
+      return array;
+    }
+
+    nextIndex = indexOfNextIterate(index);
+
+    if (nextIndex !== false) {
+      change(array, nextIndex);
+      return iterate(true, nextIndex);
+    }
+
+    return iterate(false, index+1);
   }
 
-  return newArr;
+  return iterate(true, 0);
 }
 
+var arr = [ 188, 590, 795, 155, 273, 451, 474, 788, 46, 75 ];
+
 console.time('bubble');
-bubbleSort(random.integerArray(999, 999, 0));
+console.log(bubbleSort(random.integerArray(10, 999, 0)));
 console.timeEnd('bubble');
