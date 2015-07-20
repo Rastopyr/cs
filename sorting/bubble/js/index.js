@@ -68,10 +68,11 @@ function bubbleSortReqursion(array) {
 function bubbleSortLoop(array) {
   for(var i = 0; i < array.length; i++) {
     for(var c = 0; c < array.length; c++) {
-      var a = array[c], b = array[i];
+      var a = array[c], b = array[c+1];
+
       if (a > b) {
-        array[i] = a;
         array[c] = b;
+        array[c+1] = a;
       }
     }
   }
@@ -79,12 +80,8 @@ function bubbleSortLoop(array) {
   return array;
 }
 
-var array = random.integerArray(1000, 999, 0);
+var array = random.integerArray(10, 999, 0);
 
 console.time('bubble');
 bubbleSortLoop(array);
-console.timeEnd('bubble');
-
-console.time('bubble');
-bubbleSortReqursion(array);
 console.timeEnd('bubble');
